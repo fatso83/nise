@@ -22,8 +22,12 @@
     "prepublish": "npm run bundle",
     "prepublishOnly": "mkdocs gh-deploy -r upstream || mkdocs gh-deploy -r origin",
     "test": "mocha lib/**/*.test.js",
+    "test:cloud": "mochify --wd --plugin [ proxyquire-universal ] lib/**/*.test.js",
     "test:coverage": "nyc --reporter=lcov --reporter=text --all npm test -- --reporter dot",
-    "test:headless": "mochify --https-server --plugin [ proxyquire-universal ] lib/**/*.test.js"
+    "test:headless": "mochify --https-server --plugin [ proxyquire-universal ] lib/**/*.test.js",
+    "preversion": "./scripts/preversion.sh",
+    "version": "./scripts/version.sh",
+    "postversion": "./scripts/postversion.sh"
   },
   "author": "",
   "license": "BSD-3-Clause",
